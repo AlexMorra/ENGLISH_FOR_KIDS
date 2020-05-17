@@ -1,0 +1,161 @@
+header {
+    height: 100px;
+}
+
+.menu {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    z-index: 10;
+    background-color: var(--color);
+    transition: all .5s ease;
+}
+
+.show {
+    left: 0;
+}
+
+.menu-item:first-child {
+    margin-top: 70px;
+    margin-bottom: 40px;
+    list-style: none;
+}
+
+.menu-item:last-child {
+    margin-top: 40px;
+    list-style: none;
+}
+
+.menu-item {
+    text-align: center;
+    margin: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.menu-active {
+    color: white;
+}
+
+/* BUTTON MENU */
+
+svg{
+    z-index: 11;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    cursor: pointer;
+}
+
+svg path{
+    stroke-width: 50;
+    stroke-linecap: round;
+    stroke: var(--menu-color);
+    fill: none;
+    transition: all .5s ease;
+}
+
+/* In header form */
+
+.top_bar,
+.bottom_bar{
+    stroke-dasharray: 240px 910px;
+}
+
+.middle_bar{
+    stroke-dasharray: 240px 240px;
+}
+
+/* In cross form */
+
+.open .top_bar,
+.open .bottom_bar{
+    stroke-dashoffset: -650px;
+}
+
+.open .middle_bar{
+    stroke-dasharray: 0px 220px;
+    stroke-dashoffset: -120px;
+}
+
+/* STATE TOGGLE */
+
+:root {
+    --accent: #04da97;
+    --border-width: 3px;
+    --border-radius: 55px;
+    --font-size: 25px;
+}
+
+.container {
+    display: flex;
+    float: right;
+}
+
+.toggle {
+    margin: 25px 10px 0 0;
+    position: relative;
+    border: solid var(--border-width) var(--menu-color);
+    border-radius: var(--border-radius);
+    transition: transform cubic-bezier(0, 0, 0.30, 2) .4s;
+    transform-style: preserve-3d;
+}
+
+.toggle>input[type="radio"] {
+    display: none;
+}
+
+.toggle>#choice1:checked~#flap {
+    transform: rotateY(-180deg);
+}
+
+.toggle>#choice1:checked~#flap>.content {
+    transform: rotateY(-180deg);
+}
+
+.toggle>#choice2:checked~#flap {
+    transform: rotateY(0deg);
+}
+
+.toggle>label {
+    display: inline-block;
+    min-width: 70px;
+    padding: 8px;
+    font-size: var(--font-size);
+    text-align: center;
+    color: var(--menu-color);
+    cursor: pointer;
+}
+
+.toggle>label,
+.toggle>#flap {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.toggle>#flap {
+    position: absolute;
+    top: calc( 0px - var(--border-width));
+    left: 50%;
+    height: calc(100% + var(--border-width) * 2);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size);
+    background-color: var(--menu-color);
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform cubic-bezier(0.4, 0, 0.2, 1) .5s;
+}
+
+.toggle>#flap>.content {
+    color: #333;
+    transition: transform 0s linear .25s;
+    transform-style: preserve-3d;
+}
